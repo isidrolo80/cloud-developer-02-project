@@ -60,6 +60,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
         res.end = function(chunk?: any, encodingOrCb?: string | Function, cb?: Function): void {
           deleteLocalFiles(toDelete);
         }
+        res.status(200);
         
       } else {
 
