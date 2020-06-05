@@ -42,9 +42,8 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   app.get( "/filteredimage/", async ( req, res) => {
     let { image_url } = req.query;
 
-    const isImageUrl = require('is-image-url');
+    const isImageUrl = require('is-image');
     const isValidURL = isImageUrl(image_url);
-
     if ( !image_url ) {
 
       res.status(400).send("ERROR: URL wasn't provided. Use example: /filteredimage?image_url=http://mysite.com/myimage.jpg");
@@ -61,6 +60,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
         res.end = function(chunk?: any, encodingOrCb?: string | Function, cb?: Function): void {
           deleteLocalFiles(toDelete);
         }
+        res.status(200);
         
       } else {
 
@@ -74,7 +74,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
   // Start the Server
   app.listen( port, () => {
-      console.log( `server running http://localhost:${ port }` );
+      console.log( `server running http://127.0.0.1:${ port }` );
       console.log( `press CTRL+C to stop server` );
   } );
 })();

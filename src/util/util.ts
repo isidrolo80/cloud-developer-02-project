@@ -22,14 +22,6 @@ export async function filterImageFromURL(inputURL: string): Promise<string>{
     });
 }
 
-export function checkURL(image_url: string) {
-    if (image_url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
-        return(true);
-    } else {
-        return(false);
-    }
-    
-}
 
 // deleteLocalFiles
 // helper function to delete files on the local disk
